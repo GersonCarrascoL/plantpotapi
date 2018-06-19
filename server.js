@@ -6,6 +6,7 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     restFul  = require('express-method-override')('_method'),
+    userRoutes = require('./routes/UserRouter'),
     port = (process.env.PORT || 5000),
     cors = require('cors')
 
@@ -18,5 +19,6 @@ app
     .use(bodyParser.urlencoded({extended: false}))
     .use(morgan('dev'))
     .use(restFul)
+    .use(userRoutes)
     
 ioServer.listen(port)

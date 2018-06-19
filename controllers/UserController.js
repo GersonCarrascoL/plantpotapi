@@ -19,7 +19,7 @@ class UserController{
             userPassword: req.body.userPassword
         }
 
-        let response = um.login(user)
+        let response = um.loginUser(user)
 
         response.then(function(resolve){
             if(resolve==null){

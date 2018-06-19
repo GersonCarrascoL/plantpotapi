@@ -10,9 +10,6 @@ let UserSchema = new mongoose.Schema({
     userLastName : String,
     userEmail : { type:String,required:true,unique:true},
     userPassword:{ type: String, required:true},
-    userLatitude:{ type:Number, default:0.0 },
-    userLongitude:{ type:Number, default:0.0 },
-    userSocketId:{ type:String, default:0 },
     userStatus: { type:Number, default:1 }
 })
 

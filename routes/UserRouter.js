@@ -8,8 +8,8 @@ const UserController = require('../controllers/UserController'),
 
 router
     //App routes
-    .post('/api/v1/user/login',uc.loginUser)
+    .post('/api/v1/users/login',uc.loginUser)
 
-    .post('/api/v1/users',dc.postUser)
+    .post('/api/v1/users',uc.postUser)
 
 module.exports = router
