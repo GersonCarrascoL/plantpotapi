@@ -7,6 +7,8 @@ const express = require('express'),
     morgan = require('morgan'),
     restFul  = require('express-method-override')('_method'),
     userRoutes = require('./routes/UserRouter'),
+    flowerPotRoutes = require('./routes/FlowerPotRouter'),
+    plantRoutes = require('./routes/PlantRouter'),
     port = (process.env.PORT || 5000),
     cors = require('cors')
 
@@ -20,5 +22,7 @@ app
     .use(morgan('dev'))
     .use(restFul)
     .use(userRoutes)
+    .use(flowerPotRoutes)
+    .use(plantRoutes)
     
 ioServer.listen(port)

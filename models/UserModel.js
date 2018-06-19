@@ -8,7 +8,7 @@ const User = require('../schemas/UserSchema'),
  */
 function loginUser(user){
     return new Promise(function(resolve,reject){
-        User.findOne({'userEmail':user.userEmail},"_id userEmail userPassword userLatitude userLongitude",function(err,user){
+        User.findOne({'userEmail':user.userEmail},"_id userEmail userPassword userDocumentNumber userFlowerPot userName userLastName",function(err,user){
             if(err) return reject(err)
             return resolve(user)
         })
@@ -25,7 +25,8 @@ function postUser(user){
             userName : user.userName,
             userLastName : user.userLastName,
             userEmail : user.userEmail,
-            userPassword : user.userPassword
+            userPassword : user.userPassword,
+            userDocumentNumber : user.userDocumentNumber
         })
         driv.save(function(err,user){
             if(err) return reject(err)
@@ -46,6 +47,12 @@ function deleteUser(_id){
         })
     })
 }
+
+// function linkUserPlant(data){
+//     return new Promise((resolve,reject)=>{
+//         User.update({'_id':data.idUser},)
+//     })
+// }
 
 module.exports = {
     loginUser,

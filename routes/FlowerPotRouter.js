@@ -6,6 +6,7 @@ const FlowerPotController = require('../controllers/FlowerPotController'),
     router = express.Router()
 
 router
+    .get('/api/v1/users/:id/flowerpots',fpc.getUserFlowerPots)
 
 
 module.exports = router

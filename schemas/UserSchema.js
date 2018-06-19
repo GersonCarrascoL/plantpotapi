@@ -1,7 +1,8 @@
 'use strict'
 
 const mongoose = require('mongoose'),
-    bcrypt = require('bcrypt')
+    bcrypt = require('bcrypt'),
+    FlowerPotSchema = require('./FlowerPotSchema')
 
 mongoose.Promise = Promise
 
@@ -10,7 +11,9 @@ let UserSchema = new mongoose.Schema({
     userLastName : String,
     userEmail : { type:String,required:true,unique:true},
     userPassword:{ type: String, required:true},
-    userStatus: { type:Number, default:1 }
+    userDocumentNumber : { type: Number , required:true },
+    userStatus: { type:Number, default:1 },
+    userFlowerPot: [{ type:mongoose.Schema.Types.ObjectId, ref:'FlowerPotSchema'}]
 })
 
 UserSchema.pre('save',function(next){
@@ -22,7 +25,7 @@ UserSchema.pre('save',function(next){
             if(error) return next(error)
             user.userPassword = hash
             next()
-        })
+        })  
     })
 })
 

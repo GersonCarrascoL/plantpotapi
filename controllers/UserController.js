@@ -35,7 +35,14 @@ class UserController{
                 }
                 if(result){
                     return res.status(200).send({
-                        token:jwt.createToken(user.userEmail)
+                        token:jwt.createToken(user.userEmail),
+                        user: {
+                            _id: resolve._id,
+                            userName: resolve.userName,
+                            userLastName: resolve.userLastName,
+                            userEmail: resolve.userEmail,
+                            userDocumentNumber : resolve.userDocumentNumber
+                        }
                     })
                 }else{
                     return res.status(202).send({
@@ -60,9 +67,11 @@ class UserController{
             userName : req.body.userName,
             userLastName : req.body.userLastName,
             userEmail : req.body.userEmail,
-            userPassword : req.body.userPassword
+            userPassword : req.body.userPassword,
+            userDocumentNumber : req.body.userDocumentNumber
         }
 
+        console.log(user)
         var response = um.postUser(user)
 
         response.then(function(resolve){
