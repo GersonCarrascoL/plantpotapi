@@ -11,8 +11,14 @@ class FlowerPotModel{
             //     return resolve(flowerPots)
             // })
             User.findOne({ '_id' : _id })
-            .populate('userFlowerPot')
-            .populate('userFlowerPot.flowerPotPlant')
+            .populate({
+                path:'userFlowerPot',
+                populate:{
+                    path:'flowerPotPlant',
+                    model:'Plant'
+                }
+            })
+            //.populate('userFlowerPot.flowerPotPlant')
             .exec((err,flowerPots)=>{
                 if(err) return reject(err)
                 return resolve(flowerPots)
