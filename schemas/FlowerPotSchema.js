@@ -14,7 +14,7 @@ let FlowerPotSchema = new mongoose.Schema({
     flowerPotSensorWaterStatus: { type: Number, default: 0},
     flowerPotMinSupply: Number,
     flowerPotMaxSupply: Number,
-    flowerPotPlant:{ type:mongoose.Schema.Types.ObjectId,ref:'plant'},
+    flowerPotPlant:{ type:mongoose.Schema.Types.ObjectId,ref:'Plant'},
     flowerPotSensorHistory:[{
         _id: { type: mongoose.Schema.ObjectId, auto:true } ,
         sensorHumedityValue:Number,

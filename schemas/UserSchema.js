@@ -13,7 +13,7 @@ let UserSchema = new mongoose.Schema({
     userPassword:{ type: String, required:true},
     userDocumentNumber : { type: Number , required:true },
     userStatus: { type:Number, default:1 },
-    userFlowerPot: [{ type:mongoose.Schema.Types.ObjectId, ref:'FlowerPotSchema'}]
+    userFlowerPot: [{ type:mongoose.Schema.Types.ObjectId, ref:'FlowerPot'}]
 })
 
 UserSchema.pre('save',function(next){

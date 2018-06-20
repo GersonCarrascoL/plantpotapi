@@ -6,8 +6,9 @@ const FlowerPotModel = require('../models/FlowerPotModel'),
 class FlowerPotController{
     getUserFlowerPots(req,res){
         let id = req.params.id
-        console.log(id)
+
         var response = fpm.getUserFlowerPots(id)
+
         response.then(resolve=>{
             return res.status(200).send({
                 flowerPots: resolve.userFlowerPot
