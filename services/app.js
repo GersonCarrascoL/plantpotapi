@@ -4,6 +4,9 @@ var ioEvents = function(io){
     io.on('connection', function (socket) {
         
         console.log('Conected!')
+        socket.on('message', data =>{
+            console.log(data)
+        })
         
         // socket.on('bus', function (latitude, longitude,orientation,type) {
         //     console.log({"id" : _id ,"latitude": latitude, "longitude": longitude , "orientation":orientation , "type":type})
@@ -19,8 +22,18 @@ var ioEvents = function(io){
 
 var init = function(app){
     const server = require('http').Server(app),
+        configWS = require('../config'),
         mongoose = require('mongoose'),
-        io = require('socket.io')(server)
+        SocketIO = require('socket.io')
+    
+    const configWSConnection = {
+        scheme: "wss",
+        domain: "api.artik.cloud",
+        version: "v1.1",
+        path: "live"
+    }
+
+    var io = new SocketIO(configWSConnection)
         
     ioEvents(io)
 
